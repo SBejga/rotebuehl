@@ -22,6 +22,12 @@ angular.module('gatekeeperApp')
           err = err.data;
           $scope.errors = {};
 
+          if (err.err === "restricted") {
+            form["email"].$setValidity('mongoose', false);
+            $scope.errors["email"] = "ouch, email domain now allowed to register.";
+            return;
+          }
+
           // Update validity of form fields that match the mongoose errors
           angular.forEach(err.errors, function(error, field) {
             form[field].$setValidity('mongoose', false);
