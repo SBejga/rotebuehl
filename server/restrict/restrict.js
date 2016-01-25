@@ -37,6 +37,15 @@ module.exports = function (req, res, next) {
       req.allowByEmailDomain = true;
       req.allowScope = "dhbw";
     }
+
+    //allow email address from sandbox*.mailgun.org for integration tests
+    var intTestMail = (email.indexOf(".dhbw@sandboxb34dd846552945b1a9ea8e6c7c92b36a.mailgun.org") >= 0);
+    if (intTestMail) {
+
+      allowByEmailDomain = true;
+      req.allowByEmailDomain = true;
+      req.allowScope = "test";
+    }
   }
 
   if (allowByToken || allowByEmailDomain) {

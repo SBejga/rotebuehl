@@ -2,7 +2,13 @@
  * Created by basti on 25.01.16.
  */
 var api_key = process.env.MAILGUN_APIKEY || null;
-var mailDomain = 'stranged.de';
+var mailDomain = process.env.MAILGUN_DOMAIN || null;
+
+if (!api_key || !mailDomain) {
+  console.error("no mail env vars");
+  process.exit(1);
+}
+
 
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: mailDomain});
 

@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var crypto = require('crypto');
 
 var makeActivationToken = function () {
-  return crypto.randomBytes(22).toString('base64');
+  return crypto.randomBytes(22).toString('hex');
 };
 
 var UserSchema = new Schema({
@@ -17,7 +17,7 @@ var UserSchema = new Schema({
   },
   hashedPassword: String,
   activated: {type: Boolean, default: false},
-  activationToken: {type: String, default: makeActivationToken()},
+  activationToken: {type: String, default: makeActivationToken},
   provider: String,
   salt: String
 });
@@ -128,7 +128,7 @@ UserSchema.methods = {
    * @api public
    */
   activate: function () {
-    if (this.activated) {
+    if (this.activate === true) {
       return false;
     } else {
       this.activated = true;
