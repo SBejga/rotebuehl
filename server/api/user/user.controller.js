@@ -55,7 +55,7 @@ exports.activate = function (req, res, next) {
 
   User.findOne(query, function (err, user) {
     if (err) return next(err);
-    if (!user) return res.status(401).send('Unauthorized');
+    if (!user) return res.status(401).send({"err": "Unauthorized"});
 
     //activate user status
     var status = user.activate();

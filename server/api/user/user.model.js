@@ -134,6 +134,8 @@ UserSchema.methods = {
       this.activated = true;
       this.activationToken = '';
       this.save();
+
+      return true;
     }
   },
 

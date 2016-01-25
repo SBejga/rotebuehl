@@ -43,7 +43,6 @@ describe('Auth API:', function() {
   });
 
   //time of created user;
-  var time = (new Date()).getTime() / 1000;
   var randomId = crypto.randomBytes(16).toString('hex').toLowerCase();
   var randomName = randomId;
   var activationToken;
@@ -137,9 +136,10 @@ describe('Auth API:', function() {
     });
 
     it("should activate user", function (done) {
-      var res = response;
-
-      assert.equal(res.body.profile.activated, true);
+      assert.notEqual(response.body, null);
+      assert.notEqual(response.body.profile, null);
+      assert.equal(response.body.result, true);
+      assert.equal(response.body.profile.activated, true);
 
       User.findOne({name: randomName}, function (err, doc) {
         if (err) {
@@ -152,6 +152,31 @@ describe('Auth API:', function() {
 
         done();
       });
+    });
+  });
+
+  describe("Wrong Activation", function () {
+    var response;
+
+    before(function(done) {
+      request(server)
+        .get('/api/users/activate/'+activationToken+'xxxxxxx')
+        .set('Accept', 'application/json')
+        .expect(401)
+        .expect('Content-Type', /json/)
+        .end(function (err, res) {
+          if (err) {
+            return done(err);
+          }
+
+          response = res;
+          done();
+        });
+    });
+
+    it("should fail activate user", function () {
+      assert.equal(response.body.result, undefined);
+      assert.equal(response.body.profile, undefined);
     });
   })
 
