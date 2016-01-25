@@ -47,3 +47,12 @@ User.find({}).remove(function() {
     }
   );
 });
+
+//For Activation Testing
+User.create({
+  provider: 'local',
+  name: 'ABC',
+  email: 'acc@mywoolf.de',
+  password: 'abc',
+  activationToken: '4jJ9PqE+Derj3gNhaQ+RFHL5ri9QNw=='
+});

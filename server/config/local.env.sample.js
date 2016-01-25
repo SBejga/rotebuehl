@@ -10,5 +10,6 @@ module.exports = {
   SESSION_SECRET:   'gatekeeper-secret',
 
   // Control debug level for modules using visionmedia/debug
-  DEBUG: ''
+  DEBUG: '',
+  MAILGUN_APIKEY: ''
 };

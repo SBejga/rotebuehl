@@ -4,6 +4,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var crypto = require('crypto');
 
+var makeActivationToken = function () {
+  return crypto.randomBytes(22).toString('base64');
+};
+
 var UserSchema = new Schema({
   name: String,
   email: { type: String, lowercase: true },
@@ -12,6 +16,8 @@ var UserSchema = new Schema({
     default: 'user'
   },
   hashedPassword: String,
+  activated: {type: Boolean, default: false},
+  activationToken: {type: String, default: makeActivationToken()},
   provider: String,
   salt: String
 });
@@ -36,7 +42,8 @@ UserSchema
   .get(function() {
     return {
       'name': this.name,
-      'role': this.role
+      'role': this.role,
+      'activated': this.activated
     };
   });
 
@@ -113,6 +120,21 @@ UserSchema.methods = {
    */
   authenticate: function(plainText) {
     return this.encryptPassword(plainText) === this.hashedPassword;
+  },
+  /**
+   * Activate - set user activated = true
+   *
+   * @return {Boolean}
+   * @api public
+   */
+  activate: function () {
+    if (this.activated) {
+      return false;
+    } else {
+      this.activated = true;
+      this.activationToken = '';
+      this.save();
+    }
   },
 
   /**

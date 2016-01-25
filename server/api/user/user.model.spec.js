@@ -57,4 +57,20 @@ describe('User Model', function() {
   it("should not authenticate user if password is invalid", function() {
     return user.authenticate('blah').should.not.be.true;
   });
+
+  it("should created ActivationToken", function() {
+    return user.activationToken.should.not.be.null;
+  });
+
+  it("should not activated", function() {
+    return user.activated.should.be.false;
+  });
+
+  it("should be able to activate", function() {
+    return (
+      user.activate() &&
+      user.activated.should.be.true &&
+      user.activationToken.should.be.empty
+    );
+  });
 });

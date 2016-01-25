@@ -13,5 +13,7 @@ router.get('/me', auth.isAuthenticated(), controller.me);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
+//TODO: Decide whether need to login for activation, or just click link
+router.get('/activate/:activationToken', /*auth.isAuthenticated(),*/ controller.activate);
 
 module.exports = router;
