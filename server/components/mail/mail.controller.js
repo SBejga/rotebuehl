@@ -33,7 +33,10 @@ var activationMail = function (user, callback) {
   };
 
   //send and callback with err, body
-  mailgun.messages().send(data, callback);
+  mailgun.messages().send(data, function (err, response) {
+    console.log("mailgun send", response);
+    callback(err, response);
+  });
 };
 
 module.exports = {
