@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rotebuehl')
+angular.module('rotebuehlApp')
   .controller('LoginCtrl', function ($scope, Auth, $location) {
     $scope.user = {};
     $scope.errors = {};

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rotebuehl')
+angular.module('rotebuehlApp')
   .controller('MainCtrl', function ($scope, $http, socket) {
     $scope.awesomeThings = [];
 

@@ -3,7 +3,7 @@
 /**
  * Removes server error when user updates input
  */
-angular.module('rotebuehl')
+angular.module('rotebuehlApp')
   .directive('mongooseError', function () {
     return {
       restrict: 'A',

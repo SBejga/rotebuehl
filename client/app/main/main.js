@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('rotebuehl')
+angular.module('rotebuehlApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {
-        url: '/',
+        url: '/main',
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl'
       });

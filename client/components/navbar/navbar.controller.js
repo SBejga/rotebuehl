@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rotebuehl')
+angular.module('rotebuehlApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
       'title': 'Home',

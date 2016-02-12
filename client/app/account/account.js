@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rotebuehl')
+angular.module('rotebuehlApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('login', {

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rotebuehl')
+angular.module('rotebuehlApp')
   .factory('Modal', function ($rootScope, $modal) {
     /**
      * Opens a modal
