@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('gatekeeperApp', [
+angular.module('rotebuehl', [
   'ngCookies',
   'ngResource',
   'ngSanitize',

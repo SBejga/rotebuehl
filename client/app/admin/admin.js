@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('gatekeeperApp')
+angular.module('rotebuehl')
   .config(function ($stateProvider) {
     $stateProvider
       .state('admin', {

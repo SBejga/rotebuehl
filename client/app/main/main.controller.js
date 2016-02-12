@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('gatekeeperApp')
+angular.module('rotebuehl')
   .controller('MainCtrl', function ($scope, $http, socket) {
     $scope.awesomeThings = [];
 

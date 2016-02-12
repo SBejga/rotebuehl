@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('gatekeeperApp')
+angular.module('rotebuehl')
   .factory('Modal', function ($rootScope, $modal) {
     /**
      * Opens a modal

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('gatekeeperApp')
+angular.module('rotebuehl')
   .controller('SignupCtrl', function ($scope, Auth, $location) {
     $scope.user = {};
     $scope.errors = {};
