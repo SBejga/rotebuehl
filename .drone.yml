@@ -7,7 +7,8 @@ build:
   # which will insert the drone environment variables e.g. commit, branch into json file
   - node .env_drone.js
   # to build production version with grunt
-  - grunt build
+  # force because imagemin, svgmin fail?
+  - grunt build --force
 
 # trigger docker deploy (stop, rm, pull, run)
 #deploy:
