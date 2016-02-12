@@ -1,0 +1,31 @@
+build:
+  image: sbejga/debian-ruby-node
+  commands:
+  - npm install --silent
+  - bower install --allow-root --silent
+  # create drone_meta.json by helper node.js app '.env_drone.js'
+  # which will insert the drone environment variables e.g. commit, branch into json file
+  - node .env_drone.js
+  # to build production version with grunt
+  - grunt build
+
+# trigger docker deploy (stop, rm, pull, run)
+#deploy:
+#  ssh:
+#    host:
+#     - $$SSH_HOST
+#    user: $$SSH_USER
+#    port: $$SSH_PORT
+#    sleep: 5
+#    commands:
+#      - ~/scripts/rotebuehl_latest.sh
+
+# send email
+notify:
+  email:
+    from: $$MAILGUN_FROM
+    host: smtp.mailgun.org
+    username: $$MAILGUN_USER
+    password: $$MAILGUN_PASSWORD
+    recipients:
+      - $$MAILGUN_RECIPIENT
