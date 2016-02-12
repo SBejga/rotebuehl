@@ -4,9 +4,14 @@ var User = require('./user.model');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
 var mailController = require('../../components/mail/mail.controller');
+var crypto = require('crypto');
 
 var validationError = function(res, err) {
   return res.status(422).json(err);
+};
+
+var generateRandomPassword = function () {
+  return crypto.randomBytes(10).toString('hex');
 };
 
 /**
@@ -110,6 +115,36 @@ exports.changePassword = function(req, res /*, next*/) {
       });
     } else {
       res.status(403).send('Forbidden');
+    }
+  });
+};
+
+/**
+ * Create new password
+ * @param req
+ * @param res
+ */
+exports.createPassword = function(req, res /*, next*/) {
+  var email = String(req.body.email);
+
+  User.findOne({
+    email: email
+  }, function (err, user) {
+    if(user && user.email === email) {
+      var genPassword = generateRandomPassword();
+      user.password = genPassword;
+      user.save(function(err) {
+        if (err) return validationError(res, err);
+
+        //send mail with new password
+        mailController.passwordMail(user, genPassword, function (err /*, body*/) {
+          if (err) return next(err);
+
+          res.status(200).send('OK');
+        });
+      });
+    } else {
+      res.status(404).send('Not Found');
     }
   });
 };

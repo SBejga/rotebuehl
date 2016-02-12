@@ -15,7 +15,12 @@ router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 //Restrct creation of users
 router.post('/', restrict, controller.create);
+
 //TODO: Decide whether need to login for activation, or just click link
+//TODO: redirect to frontend site?
 router.get('/activate/:activationToken', /*auth.isAuthenticated(),*/ controller.activate);
+
+//Endpoint to create new password
+router.post('/forgot', controller.createPassword);
 
 module.exports = router;
