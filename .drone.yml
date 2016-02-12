@@ -24,15 +24,15 @@ publish:
     insecure: true
 
 # trigger docker deploy (stop, rm, pull, run)
-#deploy:
-#  ssh:
-#    host:
-#     - $$SSH_HOST
-#    user: $$SSH_USER
-#    port: $$SSH_PORT
-#    sleep: 5
-#    commands:
-#      - ~/scripts/rotebuehl_latest.sh
+deploy:
+  ssh:
+    host:
+     - $$SSH_HOST
+    user: $$SSH_USER
+    port: $$SSH_PORT
+    sleep: 5
+    commands:
+      - ~/scripts/rotebuehl_latest.sh
 
 
 # send email
