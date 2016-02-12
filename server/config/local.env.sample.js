@@ -12,5 +12,9 @@ module.exports = {
   // Control debug level for modules using visionmedia/debug
   DEBUG: '',
   MAILGUN_DOMAIN: '',
-  MAILGUN_APIKEY: ''
+  MAILGUN_APIKEY: '',
+  CONTEXTIO_APIKEY: '',
+  CONTEXTIO_SECRET: '',
+  CONTEXTIO_MAINACCOUNTID: '',
+  CONTEXTIO_MAINACCOUNTMAIL: ''
 };

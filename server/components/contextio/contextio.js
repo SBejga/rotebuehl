@@ -17,8 +17,8 @@ var OAuth = require('oauth');
 var oauth = new OAuth.OAuth(
   '',
   '',
-  '2yq7mh28',
-  'CagThYKuw9x3acO4',
+  CONTEXTIO_APIKEY,
+  CONTEXTIO_SECRET,
   //'1.0A',
   '1.0',
   null,
