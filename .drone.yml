@@ -1,3 +1,6 @@
+# enable debug
+debug: true
+
 build:
   image: sbejga/debian-ruby-node
   commands:
@@ -8,7 +11,7 @@ build:
   - node .env_drone.js
   # to build production version with grunt
   # force because imagemin, svgmin fail?
-  - grunt build --force
+  - grunt build
 
 # trigger docker deploy (stop, rm, pull, run)
 #deploy:
@@ -30,3 +33,7 @@ notify:
     password: $$MAILGUN_PASSWORD
     recipients:
       - $$MAILGUN_RECIPIENT
+
+cache:
+  mount:
+    - node_modules
