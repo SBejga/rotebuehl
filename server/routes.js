@@ -11,7 +11,12 @@ module.exports = function(app) {
 
   /* Get version info and git info (via drone env) of API */
   app.get('/version', function (req, res) {
-    var commit = require('../git.json');
+    var commit;
+    try {
+      commit = require('../git.json');
+    } catch (e) {
+      console.log("file ../git.json not found", e);
+    }
     var pkg = require('../package.json');
 
     if (!commit) {
