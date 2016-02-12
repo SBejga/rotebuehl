@@ -3,7 +3,7 @@
 describe('Controller: HomeCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('rotebuehl'));
+  beforeEach(module('rotebuehlApp'));
 
   var HomeCtrl, scope;
 
