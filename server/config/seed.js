@@ -37,22 +37,13 @@ User.find({}).remove(function() {
     email: 'test@test.com',
     password: 'test'
   }, {
-    provider: 'local',
-    role: 'admin',
-    name: 'Admin',
-    email: 'admin@admin.com',
-    password: 'admin'
+      provider: 'local',
+      role: 'admin',
+      name: 'Admin',
+      email: 'admin@admin.com',
+      password: 'admin'
   }, function() {
       console.log('finished populating users');
     }
   );
-});
-
-//For Activation Testing
-User.create({
-  provider: 'local',
-  name: 'ABC',
-  email: 'acc@mywoolf.de',
-  password: 'abc',
-  activationToken: '4jJ9PqE+Derj3gNhaQ+RFHL5ri9QNw=='
 });
