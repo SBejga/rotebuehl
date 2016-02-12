@@ -1,0 +1,49 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Forgot Password</h1>
+      <p>
+        This will generate a new password for you and will send it to your registered email address.<br/>
+        Please save that password or change it later in your profile.
+      </p>
+    </div>
+    <div class="col-sm-12">
+      <form class="form" name="form" ng-submit="forgotPassword(form)" novalidate>
+
+        <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
+                                            'has-error': form.email.$invalid && submitted }">
+          <label>Email</label>
+          <input type="email" name="email" class="form-control" ng-model="user.email"
+                 required/>
+        </div>
+
+        <div class="form-group has-error">
+          <p class="help-block" ng-show="form.email.$error.required && submitted">
+            Please enter your email.
+          </p>
+          <p class="help-block" ng-show="form.email.$error.email && submitted">
+            Please enter a valid email.
+          </p>
+
+          <p class="help-block" ng-show="errors.other === true">
+            Mail is not known. Seems you have not registered. So <a href="/login">register an account</a>
+          </p>
+        </div>
+
+        <p class="help-block"> {{ message }} </p>
+
+        <div>
+          <button class="btn btn-lg btn-primary" type="submit">Request new password</button>
+
+          <span class="pull-right">
+            <a class="btn btn-default btn-lg btn-register" href="/login">
+              Login
+            </a>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -17,6 +17,12 @@ angular.module('rotebuehlApp')
         params: {
           id:'me'
         }
+      },
+      createNewPassword: {
+        method: "POST",
+        params: {
+          id: 'forgot'
+        }
       }
 	  });
   });

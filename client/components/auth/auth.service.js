@@ -93,6 +93,25 @@ angular.module('rotebuehlApp')
       },
 
       /**
+       * Forgot password, create new one
+       *
+       * @param  {String}   email
+       * @param  {Function} callback    - optional
+       * @return {Promise}
+       */
+      createNewPassword: function(email, callback) {
+        var cb = callback || angular.noop;
+
+        return User.createNewPassword({
+          email: email
+        }, function(user) {
+          return cb(user);
+        }, function(err) {
+          return cb(err);
+        }).$promise;
+      },
+
+      /**
        * Gets all available info on authenticated user
        *
        * @return {Object} user

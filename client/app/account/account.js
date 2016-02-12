@@ -18,5 +18,10 @@ angular.module('rotebuehlApp')
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',
         authenticate: true
+      })
+      .state('forgot', {
+        url: '/forgot',
+        templateUrl: 'app/account/forgot/forgot.html',
+        controller: 'ForgotCtrl'
       });
   });
