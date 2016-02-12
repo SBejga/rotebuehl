@@ -7,10 +7,62 @@
   </div>
 </header>
 
-<footer class="footer">
-  <div class="container">
-    <p>Angular Fullstack v2.1.1 |
-      <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-      <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">User Registration</h1>
+
+      <h3>Restrictions</h3>
+      <p>
+        User registration is only allowed for emails in domain <strong>*.dhbw-stuttgart.de</strong>.
+      </p>
+      <p>
+        Register your account with your lehre mail. You will get a confirmation email with a link to activate your account.<br/>
+        After that, you will be able to login via frontend and REST API.
+      </p>
+
+      <h3>Security</h3>
+      <p>
+        Your password will be saved encrypted and salted.
+      </p>
+
+      <h1 class="page-header">REST API</h1>
+      <p>
+        To login via REST API send a <strong>POST</strong> Request
+        to <strong>https://it-bejga1.dhbw-stuttgart.de/rotebuehl/auth/local</strong>
+        with following JSON body (of course without the {})
+      </p>
+<pre>POST https://it-bejga1.dhbw-stuttgart.de/rotebuehl/auth/local</pre>
+<pre>
+{
+    "email": "{your_registered_email}",
+    "password": "{your_chosen_password}"
+}
+</pre>
+
+      <p>
+        you will receive a JSON response with your login token (JWT)
+      </p>
+
+<pre>{
+    "token": "{TOKEN}"
+}</pre>
+
+      <p>
+        Store that token in a secure manner. I recommend to use a password manager like KeyPass or 1Password.
+      </p>
+
+      <p>
+        With that token you can use any other API or webservice which will verify the token with this user management service.
+        Just send the Token base64 encoded as HTTP Authorization Header with Type Bearer.
+      </p>
+
+<pre>
+"Authroziation": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJf ... aWQiOiI1NmJ"
+</pre>
+    </div>
   </div>
-</footer>
+</div>
+
+<app-footer></app-footer>
